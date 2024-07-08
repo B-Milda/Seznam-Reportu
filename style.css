@@ -1,0 +1,343 @@
+:root {
+  --spacing: 0px;
+  --spacingContent: 2em;
+  --spacingTop: 0.5em;
+}
+body {
+  font-family: "Raleway", sans-serif;
+  padding: 0px;
+  margin: 0px;
+  min-width: 60em;
+  animation: fadeInAnimation ease 2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Vrchní část */
+#uvod {
+  position: sticky;
+  top: 0;
+  left: 0;
+  font-size: 1.5em;
+  padding: 0;
+  -webkit-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
+  height: 8em;
+  transition: 0.5s;
+  background-color: white;
+  margin: 0;
+}
+#uvodcont {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: -webkit-linear-gradient(left, #140757 0%, #ed1c24 100%);
+  color: white;
+  gap: 2em;
+  -webkit-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.5);
+  padding: 1em;
+  height: 3em;
+  transition: 0.5s;
+}
+#searchcont {
+  position: relative;
+}
+#search {
+  position: relative;
+  transition: 0.5s;
+}
+
+/* Text Input */
+input[type="text"] {
+  font-family: "Raleway", sans-serif;
+  padding: 0.8em;
+  border: 1px solid white;
+  color: white;
+  background: rgba(0, 0, 0, 0);
+  font-size: 0.8em;
+}
+
+#search > input[type="text"] {
+  width: max(20vw, 10em);
+}
+
+input::placeholder {
+  color: white;
+}
+input:focus {
+  outline: 1px solid white;
+}
+
+/* Křížky u Inputů */
+#search-del,
+#repsearch-del,
+#descrsearch-del {
+  display: none;
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
+  font-weight: bold;
+  cursor: pointer;
+  color: white;
+}
+
+#repsearch-del,
+#descrsearch-del {
+  color: black;
+  top: 1em;
+  right: 1em;
+}
+
+/* Spodní část */
+#content {
+  margin-top: var(--spacingContent);
+  transition: 0.3s;
+}
+
+/* Šířka sloupců */
+.table-filter-header > td:first-of-type,
+#mainTable tr > td:first-of-type {
+  width: 15%;
+}
+.table-filter-header > td:nth-of-type(2),
+#mainTable tr > td:nth-of-type(2) {
+  width: 13%;
+}
+.table-filter-header > td:nth-of-type(3),
+#mainTable tr > td:nth-of-type(3) {
+  width: 45%;
+}
+.table-filter-header > td:nth-of-type(4),
+#mainTable tr > td:nth-of-type(4) {
+  width: 6%;
+}
+.table-filter-header > td:nth-of-type(5),
+#mainTable tr > td:nth-of-type(5) {
+  width: 12%;
+}
+.table-filter-header > td:nth-of-type(6),
+#mainTable tr > td:nth-of-type(6) {
+  width: 9%;
+}
+
+/* Hlavní Tabulka */
+table {
+  border-collapse: separate;
+  border-spacing: 15px;
+  transition: 0.3s;
+  width: 100%;
+  table-layout: fixed;
+  margin-top: var(--spacing);
+  text-align: center;
+}
+#mainTable tr > td:first-of-type {
+  transition: 0.5s;
+}
+a {
+  color: black;
+  text-decoration: none;
+}
+
+#mainTable tr {
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+}
+
+td {
+  border: 0px solid white;
+  text-align: left;
+  padding: 8px;
+  /* text-align: center;*/
+}
+
+/* Filtry */
+/* Horní Tabulka s Filtry */
+.table-filter-header {
+  font-size: 60%;
+}
+.table-filter-header > td {
+  padding-top: 12px;
+  font-size: 120%;
+  cursor: pointer;
+  font-weight: bold;
+  /* text-align: center;*/
+  transition: 0.5s;
+}
+.table-filter-header > td:hover {
+  background-color: #e2e8f0;
+  color: black;
+}
+
+/* Obsah Filtrů */
+
+#searchcont > div {
+  position: absolute;
+  justify-content: center;
+  top: var(--spacingTop);
+  background-color: white;
+  padding: 0.5em;
+  width: 10em;
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
+  transition: 0.5s;
+  flex-direction: column;
+  gap: 0.2em;
+}
+#repsearch {
+  left: 0.5em;
+}
+#ownersearch {
+  left: 15%;
+}
+#descrsearch {
+  left: 29%;
+}
+#foldersearch {
+  right: 20%;
+}
+#productsearch {
+  right: 9.5%;
+}
+#metricsearch {
+  right: 0.5em;
+}
+
+#ownersearch > div,
+#foldersearch > div,
+#productsearch > div,
+#metricsearch > div {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  padding: 0.25em;
+  font-size: 0.7em;
+}
+#ownersearch-del,
+#foldersearch-del,
+#productsearch-del,
+#metricsearch-del {
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
+  cursor: pointer;
+  transition: 0.3s;
+}
+input[type="checkbox"] {
+  width: 1.3em;
+  height: 1.3em;
+  background-color: white;
+  vertical-align: middle;
+  border: 1px solid black;
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
+  transition: 0.1s;
+}
+input[type="checkbox"]:hover {
+  outline: 0.5px solid black;
+}
+input[type="checkbox"]:checked {
+  background-color: #140757;
+}
+label {
+  cursor: pointer;
+}
+#descrsearch-input,
+#repsearch-input {
+  border: 0.5px solid lightgrey;
+  color: black;
+}
+
+.activefiltr {
+  background-color: #e2e8f0;
+}
+.selectedfiltr {
+  background-color: #140757;
+  color: white;
+  transition: 0.3s;
+}
+
+/* Nápověda */
+
+#helpButton {
+  padding-left: 60%;
+  padding: 0.15em;
+  font-size: 1.4em;
+  font-weight: bold;
+  margin-right: -1em;
+  flex-grow: 1;
+  text-align: right;
+}
+#helpButton > span {
+  cursor: pointer;
+}
+#help {
+  position: absolute;
+  align-items: center;
+  gap: 0.5em;
+  bottom: 0;
+  color: black;
+  background-color: white;
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
+  padding: 1.2em;
+  width: 18em;
+  text-align: center;
+  justify-content: center;
+  font-size: 1em;
+  opacity: 0;
+  transition: opacity 0.7s;
+  display: none;
+  height: 0.75em;
+}
+#help > span {
+  cursor: pointer;
+}
+#help-timer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 5px;
+  background: -webkit-linear-gradient(left, #ed1c24 0%, #140757 100%);
+  transition: 0.5s ease-in;
+  opacity: 0;
+}
+#help-close {
+  position: absolute;
+  right: 0.3em;
+  top: 0.2em;
+  font-size: 0.7em;
+  font-weight: bold;
+  cursor: pointer;
+}
+#help-text {
+  transition: 0.3s;
+  font-size: 0.8em;
+  text-align: center;
+}
+
+/* Copyright */
+#copyright {
+  position: absolute;
+  margin-top: 10em;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0.5em;
+}
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #140757;
+}

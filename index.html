@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+
+<html>
+
+  <head>
+  
+    <title>Seznam Reportů</title>
+    <link rel="icon" href="images/ikona.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
+    
+  </head>
+  
+<body>
+
+<!--Horní Část-->
+
+  <div id="uvod">
+    <div id="uvodcont">
+        
+      <h2>Seznam Reportů v SASu</h2>
+            
+      <div id="helpButton">
+          <span onclick="help()">?</span>
+      </div>
+      
+      <div id="help">
+        <span id="help-text"></span>
+        <div id="help-timer"></div>
+        <div id="help-close" onclick="helpClose()">X</div>
+      </div>
+      
+      <div id="search">
+        <input type="text" oninput="searchInputCheck()" id="search-input" placeholder="&#x1F50E;&#xFE0E;  Název Reportu">
+        <div id="search-del" onclick="searchInputDel()">X</div>
+      </div>
+      
+    </div>
+
+<!--Filtry-->  
+    
+    <table>
+      <tr class="table-filter-header">
+        <td onclick="toggleRepSearch()" id="ElemRepSearch">Report</td>
+        <td onclick="toggleOwnerSearch()" id="ElemOwnSearch">Vlastník</td>
+        <td onclick="toggleDescrSearch()" id="ElemDescrSearch">Popis</td>
+        <td onclick="toggleFolderSearch()" id="ElemFolderSearch">Složka</td>
+        <td onclick="toggleProductSearch()" id="ElemProductSearch">Produkty</td>
+        <td onclick="toggleMetricSearch()" id="ElemMetricSearch">Metriky</td>    
+      </tr>
+    </table>     
+    
+    <div id="searchcont">
+    
+      <div id="repsearch" style="display: none">
+        <input id="repsearch-input" oninput="repsearchInputPort()" type="text">
+        <div id="repsearch-del" onclick="searchInputDel(); document.querySelector('#repsearch-input').focus(); ">X</div>
+      </div>
+        
+      <div id="ownersearch" style="display: none">
+        <div id="ownersearch-del" onclick="ownersearchDel();">X</div>                
+      </div>
+        
+      <div id="descrsearch" style="display: none">
+        <input id="descrsearch-input" oninput="mainFilter()" type="text">
+        <div id="descrsearch-del" onclick="descrsearchDel(); document.querySelector('#descrsearch-input').focus(); ">X</div>
+      </div>
+        
+      <div id="foldersearch" style="display: none">
+        <div id="foldersearch-del" onclick="foldersearchDel();">X</div>                   
+      </div>
+        
+      <div id="productsearch" style="display: none">
+        <div id="productsearch-del" onclick="productsearchDel();">X</div>                     
+      </div> 
+        
+      <div id="metricsearch" style="display: none">
+        <div id="metricsearch-del" onclick="metricsearchDel();">X</div>                     
+      </div>
+      
+    </div>       
+  </div>
+  
+<!--Spodní Část-->  
+  
+  <div id="content">
+    <table id="mainTable">
+      
+      <tr>	<td><a href="https://www.seznam.cz/" target="_blank">Report 1</a></td> <td>Martin Novák</td> <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</td>	<td>Složka 1</td>	<td>Produkt 1</td>	<td>Metrika 2, Metrika 3</td>		</tr>
+      <tr>	<td><a href="https://www.seznam.cz/" target="_blank">Report 2</a></td> <td>Pavel Novák</td> <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</td>	<td>Složka 1</td>	<td>Produkt 3</td>	<td>Metrika 2, Metrika 3</td>		</tr>
+      <tr>	<td><a href="https://www.seznam.cz/" target="_blank">Report 3</a></td> <td>Josef Novák</td> <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</td>	<td>Složka 2</td>	<td>Produkt 3</td>	<td>Metrika 4, Metrika 3</td>		</tr>
+      <tr>	<td><a href="https://www.seznam.cz/" target="_blank">Report 4</a></td> <td>Jaroslav Novák</td> <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</td>	<td>Složka 3</td>	<td>Produkt 1</td>	<td>Metrika 2, Metrika 3</td>		</tr>
+      <tr>	<td><a href="https://www.seznam.cz/" target="_blank">Report 5</a></td> <td>Petr Novák</td> <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</td>	<td>Složka 4</td>	<td>Produkt 2</td>	<td>Metrika 4, Metrika 3</td>		</tr>
+      <tr>	<td><a href="https://www.seznam.cz/" target="_blank">Report 6</a></td> <td>Pavel Novák</td> <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</td>	<td>Složka 2</td>	<td>Produkt 3</td>	<td>Metrika 3, Metrika 3</td>		</tr>
+      <tr>	<td><a href="https://www.seznam.cz/" target="_blank">Report 7</a></td> <td>Josef Novák</td> <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</td>	<td>Složka 2</td>	<td>Produkt 3</td>	<td>Metrika 2</td>		</tr>
+      <tr>	<td><a href="https://www.seznam.cz/" target="_blank">Report 8</a></td> <td>Martin Novák</td> <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</td>	<td>Složka 3</td>	<td>Produkt 2</td>	<td>Metrika 2, Metrika 3</td>		</tr>
+      <tr>	<td><a href="https://www.seznam.cz/" target="_blank">Report 9</a></td> <td>Jaroslav Novák</td> <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</td>	<td>Složka 1</td>	<td>Produkt 2</td>	<td>Metrika 2, Metrika 3</td>		</tr>
+      <tr>	<td><a href="https://www.seznam.cz/" target="_blank">Report 10</a></td> <td>Josef Novák</td> <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</td>	<td>Složka 3</td>	<td>Produkt 2</td>	<td>Metrika 8, Metrika 1</td>		</tr>
+      <tr>	<td><a href="https://www.seznam.cz/" target="_blank">Report 11</a></td> <td>Pavel Novák</td> <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</td>	<td>Složka 3</td>	<td>Produkt 3</td>	<td>Metrika 2, Metrika 3</td>		</tr>
+      <tr>	<td><a href="https://www.seznam.cz/" target="_blank">Report 12</a></td> <td>Josef Novák</td> <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</td>	<td>Složka 2</td>	<td>Produkt 3</td>	<td>Metrika 3</td>		</tr>
+      <tr>	<td><a href="https://www.seznam.cz/" target="_blank">Report 13</a></td> <td>Martin Novák</td> <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</td>	<td>Složka 1</td>	<td>Produkt 1</td>	<td>Metrika 2, Metrika 4</td>		</tr>
+      <tr>	<td><a href="https://www.seznam.cz/" target="_blank">Report 14</a></td> <td>Jaroslav Novák</td> <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</td>	<td>Složka 3</td>	<td>Produkt 1</td>	<td>Metrika 2, Metrika 3</td>		</tr>
+      <tr>	<td><a href="https://www.seznam.cz/" target="_blank">Report 15</a></td> <td>Pavel Novák</td> <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</td>	<td>Složka 1</td>	<td>Produkt 3</td>	<td>Metrika 2, Metrika 3</td>		</tr>
+      <tr>	<td><a href="https://www.seznam.cz/" target="_blank">Report 16</a></td> <td>Petr Novák</td> <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</td>	<td>Složka 4</td>	<td>Produkt 3</td>	<td>Metrika 2, Metrika 3</td>		</tr>
+      <tr>	<td><a href="https://www.seznam.cz/" target="_blank">Report 17</a></td> <td>Jaroslav Novák</td> <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</td>	<td>Složka 3</td>	<td>Produkt 1</td>	<td>Metrika 1, Metrika 2</td>		</tr>
+      <tr>	<td><a href="https://www.seznam.cz/" target="_blank">Report 18</a></td> <td>Martin Novák</td> <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</td>	<td>Složka 2</td>	<td>Produkt 3</td>	<td>Metrika 4, Metrika 2</td>		</tr>
+      <tr>	<td><a href="https://www.seznam.cz/" target="_blank">Report 19</a></td> <td>Pavel Novák</td> <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</td>	<td>Složka 2</td>	<td>Produkt 3</td>	<td>Metrika 6, Metrika 4</td>		</tr>
+      <tr>	<td><a href="https://www.seznam.cz/" target="_blank">Report 20</a></td> <td>Petr Novák</td> <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</td>	<td>Složka 1</td>	<td>Produkt 1</td>	<td>Metrika 2, Metrika 3</td>		</tr>
+      <tr>	<td><a href="https://www.seznam.cz/" target="_blank">Report 21</a></td> <td>Martin Novák</td> <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</td>	<td>Složka 2</td>	<td>Produkt 4</td>	<td>Metrika 1, Metrika 3</td>		</tr>
+      <tr>	<td><a href="https://www.seznam.cz/" target="_blank">Report 22</a></td> <td>Jaroslav Novák</td> <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</td>	<td>Složka 3</td>	<td>Produkt 4</td>	<td>Metrika 8, Metrika 1</td>		</tr>
+      <tr>	<td><a href="https://www.seznam.cz/" target="_blank">Report 23</a></td> <td>Pavel Novák</td> <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</td>	<td>Složka 4</td>	<td>Produkt 4</td>	<td>Metrika 8, Metrika 1</td>		</tr>
+      <tr>	<td><a href="https://www.seznam.cz/" target="_blank">Report 24</a></td> <td>Josef Novák</td> <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</td>	<td>Složka 2</td>	<td>Produkt 2</td>	<td>Metrika 2, Metrika 3</td>		</tr>
+      <tr>	<td><a href="https://www.seznam.cz/" target="_blank">Report 25</a></td> <td>Jaroslav Novák</td> <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</td>	<td>Složka 2</td>	<td>Produkt 2</td>	<td>Metrika 2</td>		</tr>
+      <tr>	<td><a href="https://www.seznam.cz/" target="_blank">Report 26</a></td> <td>Pavel Novák</td> <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</td>	<td>Složka 2</td>	<td>Produkt 1</td>	<td>Metrika 4, Metrika 10</td>		</tr>
+      <tr>	<td><a href="https://www.seznam.cz/" target="_blank">Report 27</a></td> <td>Josef Novák</td> <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</td>	<td>Složka 4</td>	<td>Produkt 1</td>	<td>Metrika 2, Metrika 3</td>		</tr>
+
+    </table>
+  </div>
+  
+  <div id="copyright"> Vytvořeno 2024
+  </div>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
+
